@@ -1,5 +1,6 @@
 .footer {
   background: white;
+  background: #F4F4F4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +8,7 @@
   padding: 0px 50px;
   margin-top: 20px;
   color: black;
+  color: rgba(0,0,0,0.3);
 }
 .footer-links {
   display: flex;
