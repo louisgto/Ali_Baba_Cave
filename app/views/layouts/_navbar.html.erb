@@ -1,4 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "Ali Baba's Cave", "/pieces", class: "nav-link" %>
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
@@ -11,6 +12,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
+        <%= link_to "My art pieces", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item ml-3">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Sell</button>
+      </li>
+      <li class="nav-item active ml-5">
         <%= link_to "Home", "#", class: "nav-link" %>
       </li>
       <li class="nav-item">

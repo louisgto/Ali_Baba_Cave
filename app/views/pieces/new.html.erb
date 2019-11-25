@@ -1,0 +1,20 @@
+<div>
+  <h1 class="text-center">Add an art piece</h1>
+</div>
+<div class="container col-6 h">
+  <%= simple_form_for (@piece) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :artist %>
+    <%= f.input :year %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <div class="row justify-content-center">
+      <div class="mr-2">
+        <%= f.button :submit, class: "btn-primary" %>
+      </div>
+      <div>
+        <%= link_to "Back to pieces", pieces_path, class: "btn btn-dark"%>
+      </div>
+    </div>
+  <% end %>
+</div>
