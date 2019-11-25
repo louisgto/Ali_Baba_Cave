@@ -1,0 +1,25 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "Ali Baba's Cave", "/pieces", class: "nav-link" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "My art pieces", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item ml-3">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Sell</button>
+      </li>
+      <li class="nav-item active ml-5">
+        <div>
+          <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

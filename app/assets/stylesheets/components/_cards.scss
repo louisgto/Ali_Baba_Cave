@@ -1,0 +1,14 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.card {
+  height: 120px;
+  box-shadow: 0px 4px 4px #F4F4F4;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
