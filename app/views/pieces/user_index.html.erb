@@ -11,6 +11,7 @@
           <h4><%= link_to user_piece.title, user_index_path(user_piece) %></h4>
           <h5><%= user_piece.artist %></h5>
           <p><strong><%= user_piece.price %> €</strong></p>
+          <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
         </div>
       </div>
     </li>
