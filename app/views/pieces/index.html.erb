@@ -1,13 +1,16 @@
   <div class="flex-column center">
-    <h1 class="white text-center">All art pieces</h1>
+    <h1 class="white text-center mt-3">All art pieces</h1>
   </div>
 
 <ul class="container cards">
   <% @pieces.each do |piece| %>
     <li>
       <div class="card-category card">
-        <h4 class="text-center"><%= link_to piece.title, piece_path(piece) %></h4>
-        <div class="row d-flex">
+        <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+        <div class="text-center">
+          <h4><%= link_to piece.title, piece_path(piece) %></h4>
+          <h5><%= piece.artist %></h5>
+          <p><strong><%= piece.price %> €</strong></p>
         </div>
       </div>
     </li>
