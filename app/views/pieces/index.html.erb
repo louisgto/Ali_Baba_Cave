@@ -2,6 +2,17 @@
     <h1 class="white text-center mt-3">All art pieces</h1>
   </div>
 
+<div class="container text-center dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Category
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% @categories.each do |category| %>
+    <a class="dropdown-item" href="#"><%= category.name %></a>
+    <% end %>
+  </div>
+</div>
+
 <ul class="container cards">
   <% @pieces.each do |piece| %>
     <li>
