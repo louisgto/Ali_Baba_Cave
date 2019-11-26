@@ -6,6 +6,8 @@ class CreatePieces < ActiveRecord::Migration[5.2]
       t.integer :year
       t.text :description
       t.integer :price
+      t.references :user, foreign_key: true
+      t.references :category, foreign_key: true
 
       t.timestamps
     end

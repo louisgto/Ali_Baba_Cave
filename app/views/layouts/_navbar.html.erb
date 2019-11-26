@@ -11,17 +11,18 @@
         <%= link_to "My art pieces", "#", class: "nav-link" %>
       </li>
       <li class="nav-item ml-3">
-        <button class="btn btn-outline-success mr-3 my-2 my-sm-0" type="button">Sell</button>
+        <%= link_to "Sell", new_piece_path, class: "btn btn-outline-success mr-3 my-2 my-sm-0" %>
       </li>
       <li class="nav-item active">
         <div>
           <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success mr-3 my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success mr-3 my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark"%>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark" %>
       </li>
     </ul>
   </div>
