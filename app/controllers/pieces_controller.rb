@@ -22,16 +22,6 @@ class PiecesController < ApplicationController
     end
   end
 
-  def user_index
-    @user_pieces = []
-    @pieces = Piece.all
-    @pieces.each do |piece|
-      if piece.user == current_user
-        @user_pieces << piece
-      end
-    end
-  end
-
   def edit
     @piece = Piece.find(params[:id])
   end
@@ -45,7 +35,17 @@ class PiecesController < ApplicationController
   def destroy
     @piece = Piece.find(params[:id])
     @piece.destroy
-    redirect_to user_index_path
+    redirect_to pieces_path
+  end
+
+  # ----- USER PIECES -----
+  def user_index
+    @user_pieces = []
+    @pieces = Piece.all
+    @pieces.each do |piece|
+      @user_pieces << piece if piece.user == current_user
+    end
+    @categories = Category.all
   end
 
   private
