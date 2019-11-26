@@ -10,3 +10,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.sticky_top{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
