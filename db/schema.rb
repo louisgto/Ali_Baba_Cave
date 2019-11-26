@@ -27,12 +27,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_205534) do
     t.integer "year"
     t.text "description"
     t.integer "price"
-    t.bigint "user_id"
-    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_pieces_on_category_id"
-    t.index ["user_id"], name: "index_pieces_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +43,4 @@ ActiveRecord::Schema.define(version: 2019_11_25_205534) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "pieces", "categories"
-  add_foreign_key "pieces", "users"
 end

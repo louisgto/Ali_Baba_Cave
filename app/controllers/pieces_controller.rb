@@ -1,6 +1,7 @@
 class PiecesController < ApplicationController
   def index
     @pieces = Piece.all
+    @categories = Category.all
   end
 
   def new
