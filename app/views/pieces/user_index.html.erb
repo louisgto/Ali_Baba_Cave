@@ -1,19 +1,30 @@
-  <div class="flex-column center">
-    <h1 class="white text-center mt-3">My art pieces</h1>
+<h1 class=" center white text-center mt-3">My art pieces</h1>
+
+<div class="d-flex">
+  <div class="col-2 sign_in_card dropdown">
+    <h3>Filters</h3>
+    <div class="border my-3"></div>
+    <button class="width100 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% @categories.each do |category| %>
+        <a class="dropdown-item" href="#"><%= category.name %></a>
+      <% end %>
+    </div>
   </div>
 
-<ul class="container cards">
-  <% @user_pieces.each do |user_piece| %>
-    <li>
-      <div class="card-category card">
-        <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
-        <div class="text-center">
-          <h4><%= link_to user_piece.title, user_index_path(user_piece) %></h4>
-          <h5><%= user_piece.artist %></h5>
-          <p><strong><%= user_piece.price %> €</strong></p>
-          <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
+  <ul class="col-10 cards">
+    <% @user_pieces.each do |user_piece| %>
+      <li>
+        <div class="card-category card">
+          <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+          <div class="container text-center pb-4">
+            <h4><%= link_to user_piece.title, user_index_path(user_piece) %></h4>
+            <h5><%= user_piece.artist %></h5>
+            <p><strong><%= user_piece.price %> €</strong></p>
+            <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary w-100" %>
+          </div>
         </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

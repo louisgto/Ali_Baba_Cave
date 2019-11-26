@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_205534) do
+ActiveRecord::Schema.define(version: 2019_11_26_190750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_11_25_205534) do
     t.index ["user_id"], name: "index_pieces_on_user_id"
   end
 
+  create_table "transacts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "piece_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["piece_id"], name: "index_transacts_on_piece_id"
+    t.index ["user_id"], name: "index_transacts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +58,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_205534) do
 
   add_foreign_key "pieces", "categories"
   add_foreign_key "pieces", "users"
+  add_foreign_key "transacts", "pieces"
+  add_foreign_key "transacts", "users"
 end
