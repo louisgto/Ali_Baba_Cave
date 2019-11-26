@@ -21,6 +21,16 @@ class PiecesController < ApplicationController
     end
   end
 
+  def user_index
+    @user_pieces = []
+    @pieces = Piece.all
+    @pieces.each do |piece|
+      if piece.user == current_user
+        @user_pieces << piece
+      end
+    end
+  end
+
   private
 
   def piece_params
