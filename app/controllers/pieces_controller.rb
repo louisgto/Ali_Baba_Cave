@@ -32,6 +32,22 @@ class PiecesController < ApplicationController
     end
   end
 
+  def edit
+    @piece = Piece.find(params[:id])
+  end
+
+  def update
+    @piece = Piece.find(params[:id])
+    @piece.update(piece_params)
+    redirect_to piece_path(@piece)
+  end
+
+  def destroy
+    @piece = Piece.find(params[:id])
+    @piece.destroy
+    redirect_to user_index_path
+  end
+
   private
 
   def piece_params
