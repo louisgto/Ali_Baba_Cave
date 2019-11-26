@@ -13,8 +13,9 @@ class PiecesController < ApplicationController
 
   def create
     @piece = Piece.new(piece_params)
+    @piece.user = current_user
     if @piece.save
-      redirect_to cocktail_path(@piece)
+      redirect_to piece_path(@piece)
     else
       render :new
     end
@@ -25,6 +26,6 @@ class PiecesController < ApplicationController
   def piece_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:piece).permit(:title, :artist, :year, :description, :price)
+    params.require(:piece).permit(:title, :artist, :year, :category_id, :description, :price)
   end
 end

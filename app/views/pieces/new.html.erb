@@ -1,11 +1,12 @@
 <div>
-  <h1 class="text-center">Add an art piece</h1>
+  <h1 class="text-center mt-3">Add an art piece</h1>
 </div>
 <div class="container col-6 h">
   <%= simple_form_for (@piece) do |f| %>
     <%= f.input :title %>
     <%= f.input :artist %>
     <%= f.input :year %>
+    <%= f.association :category %>
     <%= f.input :description %>
     <%= f.input :price %>
     <div class="row justify-content-center">
