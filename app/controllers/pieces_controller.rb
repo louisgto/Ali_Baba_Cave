@@ -2,13 +2,6 @@ class PiecesController < ApplicationController
   def index
     @pieces = Piece.all
     @categories = Category.all
-
-    @markers = @pieces.map do |piece|
-      {
-        lat: piece.latitude,
-        lng: piece.longitude
-      }
-    end
   end
 
   def new
