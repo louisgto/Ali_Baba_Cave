@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
 
   resources :pieces
-  get 'user_index', to: 'pieces#user_index', as: :user_index
+    get 'user_index', to: 'pieces#user_index', as: :user_index
 end

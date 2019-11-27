@@ -20,7 +20,14 @@
       </div>
     </div>
     <%= f.input :description %>
-    <%= f.input :price %>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :price, class: "w-100" %>
+      </div>
+      <div class="col-6">
+        <%= f.input :address, class: "w-100" %>
+      </div>
+    </div>
     <div class="mb-2">
       <%= f.button :submit, class: "btn btn-success w-100" %>
     </div>

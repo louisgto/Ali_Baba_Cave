@@ -2,6 +2,13 @@ class PiecesController < ApplicationController
   def index
     @pieces = Piece.all
     @categories = Category.all
+
+    @markers = @pieces.map do |piece|
+      {
+        lat: piece.latitude,
+        lng: piece.longitude
+      }
+    end
   end
 
   def new
@@ -53,6 +60,6 @@ class PiecesController < ApplicationController
   def piece_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:piece).permit(:title, :artist, :year, :category_id, :description, :price)
+    params.require(:piece).permit(:title, :artist, :year, :category_id, :description, :price, :address)
   end
 end
