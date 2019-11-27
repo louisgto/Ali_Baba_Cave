@@ -1,7 +1,8 @@
 class PiecesController < ApplicationController
   def index
-    @pieces = Piece.all
     @categories = Category.all
+    @pieces = Piece.all
+    @available_pieces = Piece.where(sold: false)
   end
 
   def new
@@ -41,11 +42,18 @@ class PiecesController < ApplicationController
   # ----- USER PIECES -----
   def user_index
     @user_pieces = []
+    @bought_pieces = []
+    @categories = Category.all
     @pieces = Piece.all
+    @transacts = Transact.all
+
     @pieces.each do |piece|
       @user_pieces << piece if piece.user == current_user
     end
-    @categories = Category.all
+    @transacts.each do |transact|
+      @bought_pieces << transact.piece if transact.user == current_user
+    end
+    @pieces
   end
 
   private

@@ -11,20 +11,41 @@
       <% end %>
     </div>
   </div>
-
-  <ul class="col-10 cards">
-    <% @user_pieces.each do |user_piece| %>
-      <li>
-        <div class="card-category card">
-          <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
-          <div class="container text-center pb-4">
-            <h4><%= link_to user_piece.title, piece_path(user_piece) %></h4>
-            <h5><%= user_piece.artist %></h5>
-            <p><strong><%= user_piece.price %> €</strong></p>
-            <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary w-100" %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <div class="col-10">
+    <h2>Own art pieces</h2>
+    <div class="border mb-3"></div>
+      <ul class="cards">
+        <% @user_pieces.each do |user_piece| %>
+          <li>
+            <div class="card-category card">
+              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+              <div class="container text-center pb-4">
+                <h4><%= link_to user_piece.title, piece_path(user_piece) %></h4>
+                <h5><%= user_piece.artist %></h5>
+                <p><strong><%= user_piece.price %> €</strong></p>
+                <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary w-100" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <h2 class="mt-5">Bought art pieces</h2>
+    <div class="border mb-3"></div>
+      <ul class="cards">
+        <% @bought_pieces.each do |bought_piece| %>
+          <li>
+            <div class="card-category card">
+              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+              <div class="container text-center pb-4">
+                <h4><%= link_to bought_piece.title, piece_path(bought_piece) %></h4>
+                <h5><%= bought_piece.artist %></h5>
+                <p><strong><%= bought_piece.price %> €</strong></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+  </div>
 </div>
+
+
