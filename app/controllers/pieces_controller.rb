@@ -35,7 +35,7 @@ class PiecesController < ApplicationController
   def destroy
     @piece = Piece.find(params[:id])
     @piece.destroy
-    redirect_to pieces_path
+    redirect_to user_index_path
   end
 
   # ----- USER PIECES -----
