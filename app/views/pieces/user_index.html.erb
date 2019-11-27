@@ -18,7 +18,7 @@
         <div class="card-category card">
           <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
           <div class="container text-center pb-4">
-            <h4><%= link_to user_piece.title, user_index_path(user_piece) %></h4>
+            <h4><%= link_to user_piece.title, piece_path(user_piece) %></h4>
             <h5><%= user_piece.artist %></h5>
             <p><strong><%= user_piece.price %> €</strong></p>
             <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary w-100" %>

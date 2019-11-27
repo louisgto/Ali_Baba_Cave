@@ -14,18 +14,19 @@
 
   <ul class="col-10 cards">
     <% @pieces.each do |piece| %>
-      <li>
-        <div class="card-category card">
-          <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
-          <div class="container text-center pb-4">
-            <h4><%= link_to piece.title, piece_path(piece) %></h4>
-            <h5><%= piece.artist %></h5>
-            <p><strong><%= piece.price %> €</strong></p>
-            <%= link_to "Buy", new_piece_path, class: "btn btn-dark w-100 mr-3 my-2 my-sm-0" %>
+      <% if piece.user != current_user %>
+        <li>
+          <div class="card-category card">
+            <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+            <div class="container text-center pb-4">
+              <h4><%= link_to piece.title, piece_path(piece) %></h4>
+              <h5><%= piece.artist %></h5>
+              <p><strong><%= piece.price %> €</strong></p>
+              <%= link_to "Buy", new_piece_path, class: "btn btn-dark w-100 mr-3 my-2 my-sm-0" %>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
-
