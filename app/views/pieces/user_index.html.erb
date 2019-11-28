@@ -1,19 +1,10 @@
-<h1 class=" center white text-center mt-3">My art pieces</h1>
+<div class="container">
+  <h1 class="center white text-center mt-3">My art pieces</h1>
 
-<div class="d-flex">
-  <div class="col-2 sign_in_card dropdown">
-    <h3>Filters</h3>
-    <div class="border my-3"></div>
-    <button class="width100 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <% @categories.each do |category| %>
-        <a class="dropdown-item" href="#"><%= category.name %></a>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-10">
-    <h2>Own art pieces</h2>
-    <div class="border mb-3"></div>
+  <div class="d-flex">
+    <div class="container bg-white pt-3">
+      <h2>Your sells</h2>
+      <div class="border mb-3"></div>
       <ul class="cards">
         <% @user_pieces.each do |user_piece| %>
           <li>
@@ -29,22 +20,42 @@
           </li>
         <% end %>
       </ul>
-    <h2 class="mt-5">Bought art pieces</h2>
+    </div>
+    <div class="mx-3"></div>
+    <div class="container bg-white pt-3">
+    <h2>Your purchases</h2>
     <div class="border mb-3"></div>
       <ul class="cards">
         <% @bought_pieces.each do |bought_piece| %>
           <li>
-            <div class="card-category card">
-              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
-              <div class="container text-center pb-4">
+            <div class="card-category card row">
+              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card mr-2">
+              <div class="containe pb-4">
                 <h4><%= link_to bought_piece.title, piece_path(bought_piece) %></h4>
                 <h5><%= bought_piece.artist %></h5>
                 <p><strong><%= bought_piece.price %> €</strong></p>
+                <%= link_to "Sell", new_piece_path, class: "btn btn-success w-100" %>
               </div>
             </div>
           </li>
         <% end %>
       </ul>
+    </div>
+  </div>
+  <div class="container bg-white pt-3 mt-4">
+    <h2>Historical transactions</h2>
+    <div class="border mb-3"></div>
+    <ul class="container">
+      <% @transacts.each do |transact| %>
+        <li class="row">
+          <p>- n°<%= transact.id %> :
+          <%= transact.piece.title %>,
+          <%= transact.piece.artist %> bought by
+          <%= transact.user.email %>
+          <strong><%= transact.piece.price %> €</strong></p>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 
