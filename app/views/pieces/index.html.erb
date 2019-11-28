@@ -7,7 +7,7 @@
       <% @f_pieces.each do |piece| %>
         <li>
           <div class="card-category card">
-            <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
+            <%= cl_image_tag piece.photo, height: 200, crop: :fill %>
             <div class="container text-center pb-4">
               <h4><%= link_to piece.title, piece_path(piece) %></h4>
               <h5><%= piece.artist %></h5>

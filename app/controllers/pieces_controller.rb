@@ -64,6 +64,6 @@ class PiecesController < ApplicationController
   def piece_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:piece).permit(:title, :artist, :category_id, :year, :description, :price, :address)
+    params.require(:piece).permit(:title, :artist, :category_id, :year, :description, :price, :address, :photo)
   end
 end
