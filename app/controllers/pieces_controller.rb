@@ -1,8 +1,12 @@
 class PiecesController < ApplicationController
   def index
     @categories = Category.all
-    @pieces = Piece.all
-    @available_pieces = Piece.where(sold: false)
+      @available_pieces = Piece.where(sold: false)
+    if params[:query].present?
+      @available_pieces = @available_pieces.where("title ILIKE ?", "%#{params[:query]}%")
+    else
+      @available_pieces = @available_pieces.where(sold: false)
+    end
   end
 
   def new

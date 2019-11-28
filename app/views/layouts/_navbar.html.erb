@@ -6,12 +6,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <div>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success mr-3 my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
+        <div class="form-inline">
+          <%= form_tag pieces_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mr-sm-2",
+          placeholder: "Find an art piece" %>
+          <%= submit_tag "Search", class: "btn btn-outline-success mr-3 my-2 my-sm-0" %>
+        <% end %>
+      </div>
       </li>
       <li class="nav-item">
         <%= link_to "Sell", new_piece_path, class: "btn btn-outline-success mr-3 my-2 my-sm-0" %>
