@@ -1,9 +1,6 @@
 class PiecesController < ApplicationController
   def index
-    @categories = Category.all
-
     @pieces = policy_scope(Piece)
-
     @available_pieces = Piece.where(sold: false)
     @f_pieces = @available_pieces.where.not(user: current_user)
     if params[:query].present?
@@ -50,12 +47,11 @@ class PiecesController < ApplicationController
     @piece = Piece.find(params[:id])
     @piece.destroy
     authorize @piece
-    redirect_to user_index_path
+    redirect_to dashboard_path
   end
 
   # ----- USER PIECES -----
-  def user_index
-    @categories = Category.all
+  def dashboard
     @user_pieces = current_user.pieces
     authorize @user_pieces
     @bought_transacts = current_user.transacts

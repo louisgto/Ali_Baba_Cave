@@ -34,7 +34,7 @@ Category.create!(name: "sculpture")
 puts "2 categories created"
 
 6.times do
-  user_piece = Piece.new(
+  piece = Piece.new(
     title:          Faker::Cannabis.brand,
     artist:         Faker::Artist.name,
     year:           Faker::Number.between(from: 1500, to: 2019),

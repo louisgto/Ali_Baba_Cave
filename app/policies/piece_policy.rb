@@ -13,7 +13,7 @@ class PiecePolicy < ApplicationPolicy
     true
   end
 
-  def user_index?
+  def dashboard?
     true
   end
 

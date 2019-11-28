@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :pieces do
     resources :transacts
   end
-  get 'user_index', to: 'pieces#user_index', as: :user_index
+  get 'dashboard', to: 'pieces#dashboard', as: :dashboard
 end

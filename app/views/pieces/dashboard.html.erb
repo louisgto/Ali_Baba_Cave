@@ -8,7 +8,8 @@
       <ul class="">
         <% @user_pieces.each do |user_piece| %>
           <li class="d-flex justify-content-between align-items-center mb-1">
-              <p class="my-0">- <strong><%= user_piece.title %></strong>, <strong><%= user_piece.artist %></strong></p>
+              <p class="my-0">
+                - <strong><%= link_to user_piece.title, piece_path(user_piece) %></strong>, <strong><%= link_to user_piece.artist, piece_path(user_piece) %></strong></p>
               <div>
                 <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
                 <%= link_to "Delete", piece_path(user_piece), method: :delete, class: "btn btn-danger" %>
