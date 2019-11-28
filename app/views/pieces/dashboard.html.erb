@@ -7,14 +7,15 @@
       <div class="border mb-3"></div>
       <ul class="">
         <% @user_pieces.each do |user_piece| %>
-          <li class="d-flex justify-content-between align-items-center mb-1">
-              <p class="my-0">
-                - <strong><%= link_to user_piece.title, piece_path(user_piece) %></strong>, <strong><%= link_to user_piece.artist, piece_path(user_piece) %></strong></p>
+          <% if user_piece.sold == false %>
+            <li class="d-flex justify-content-between align-items-center mb-1">
+              <p class="my-0">- <strong><%= link_to "#{user_piece.title}, #{user_piece.artist}", piece_path(user_piece) %></strong></p>
               <div>
                 <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
                 <%= link_to "Delete", piece_path(user_piece), method: :delete, class: "btn btn-danger" %>
               </div>
-          </li>
+            </li>
+          <% end %>
         <% end %>
       </ul>
       <div class="border mb-3"></div>
@@ -26,11 +27,11 @@
       <ul class="">
         <% @bought_transacts.each do |bought_transact| %>
           <li class="d-flex justify-content-between align-items-center mb-1">
-              <p class="my-0">- <strong><%= bought_transact.piece.title %></strong>, <strong><%= bought_transact.piece.artist %></strong></p>
-              <div>
-                <%= link_to "Edit", edit_piece_path(bought_transact.piece), class: "btn btn-dark" %>
-                <%= link_to "Sell", piece_path(bought_transact.piece), method: :delete, class: "btn btn-success" %>
-              </div>
+            <p class="my-0">- <strong><%= link_to " #{bought_transact.piece.title}, #{bought_transact.piece.artist}", piece_path(bought_transact.piece) %></strong></p>
+            <div>
+              <%= link_to "Edit", edit_piece_path(bought_transact.piece), class: "btn btn-dark" %>
+              <%= link_to "Sell", piece_path(bought_transact.piece), class: "btn btn-success" %>
+            </div>
           </li>
         <% end %>
       </ul>
@@ -43,7 +44,7 @@
       <h2>Sells transaction</h2>
       <div class="border mb-3"></div>
       <ul class="">
-        <% @bought_transacts.each do |transact| %>
+        <% @sells_transacts.each do |transact| %>
           <li class="d-flex">
             <p>- n°<%= transact.id %> :
             <strong><%= transact.piece.title %></strong>,
