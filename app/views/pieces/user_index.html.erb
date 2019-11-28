@@ -1,61 +1,76 @@
 <div class="container">
-  <h1 class="center white text-center mt-3">My art pieces</h1>
+  <h1 class="center white text-center mt-3">Dashboard</h1>
 
   <div class="d-flex">
     <div class="container bg-white pt-3">
-      <h2>Your sells</h2>
+      <h2>Sells</h2>
       <div class="border mb-3"></div>
-      <ul class="cards">
+      <ul class="">
         <% @user_pieces.each do |user_piece| %>
-          <li>
-            <div class="card-category card">
-              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
-              <div class="container text-center pb-4">
-                <h4><%= link_to user_piece.title, piece_path(user_piece) %></h4>
-                <h5><%= user_piece.artist %></h5>
-                <p><strong><%= user_piece.price %> €</strong></p>
-                <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary w-100" %>
+          <li class="d-flex justify-content-between align-items-center mb-1">
+              <p class="my-0">- <strong><%= user_piece.title %></strong>, <strong><%= user_piece.artist %></strong></p>
+              <div>
+                <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
+                <%= link_to "Delete", piece_path(user_piece), method: :delete, class: "btn btn-danger" %>
               </div>
-            </div>
           </li>
         <% end %>
       </ul>
+      <div class="border mb-3"></div>
     </div>
     <div class="mx-3"></div>
     <div class="container bg-white pt-3">
-    <h2>Your purchases</h2>
+    <h2>Purchases</h2>
     <div class="border mb-3"></div>
-      <ul class="cards">
-        <% @bought_pieces.each do |bought_piece| %>
-          <li>
-            <div class="card-category card row">
-              <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card mr-2">
-              <div class="containe pb-4">
-                <h4><%= link_to bought_piece.title, piece_path(bought_piece) %></h4>
-                <h5><%= bought_piece.artist %></h5>
-                <p><strong><%= bought_piece.price %> €</strong></p>
-                <%= link_to "Sell", new_piece_path, class: "btn btn-success w-100" %>
+      <ul class="">
+        <% @bought_transacts.each do |bought_transact| %>
+          <li class="d-flex justify-content-between align-items-center mb-1">
+              <p class="my-0">- <strong><%= bought_transact.piece.title %></strong>, <strong><%= bought_transact.piece.artist %></strong></p>
+              <div>
+                <%= link_to "Edit", edit_piece_path(bought_transact.piece), class: "btn btn-dark" %>
+                <%= link_to "Sell", piece_path(bought_transact.piece), method: :delete, class: "btn btn-success" %>
               </div>
-            </div>
           </li>
         <% end %>
       </ul>
+      <div class="border mb-3"></div>
     </div>
   </div>
-  <div class="container bg-white pt-3 mt-4">
-    <h2>Historical transactions</h2>
+
+  <div class="d-flex mt-4">
+    <div class="container bg-white pt-3">
+      <h2>Sells transaction</h2>
+      <div class="border mb-3"></div>
+      <ul class="">
+        <% @bought_transacts.each do |transact| %>
+          <li class="d-flex">
+            <p>- n°<%= transact.id %> :
+            <strong><%= transact.piece.title %></strong>,
+            <strong><%= transact.piece.artist %></strong>
+            bought by <strong>me</strong> for
+            <strong><%= transact.piece.price %> €</strong></p>
+          </li>
+        <% end %>
+      </ul>
+      <div class="border mb-3"></div>
+    </div>
+    <div class="mx-3"></div>
+    <div class="container bg-white pt-3">
+    <h2>Purchases transactions</h2>
     <div class="border mb-3"></div>
-    <ul class="container">
-      <% @transacts.each do |transact| %>
-        <li class="row">
-          <p>- n°<%= transact.id %> :
-          <%= transact.piece.title %>,
-          <%= transact.piece.artist %> bought by
-          <%= transact.user.email %>
-          <strong><%= transact.piece.price %> €</strong></p>
-        </li>
-      <% end %>
-    </ul>
+      <ul class="">
+        <% @bought_transacts.each do |transact| %>
+          <li class="d-flex">
+            <p>- n°<%= transact.id %> :
+            <strong><%= transact.piece.title %></strong>,
+            <strong><%= transact.piece.artist %></strong>
+            bought by <strong>me</strong> for
+            <strong><%= transact.piece.price %> €</strong></p>
+          </li>
+        <% end %>
+      </ul>
+      <div class="border mb-3"></div>
+    </div>
   </div>
 </div>
 
