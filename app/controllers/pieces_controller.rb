@@ -41,15 +41,11 @@ class PiecesController < ApplicationController
 
   # ----- USER PIECES -----
   def user_index
-    @user_pieces = []
-    @bought_pieces = []
     @categories = Category.all
-    @pieces = Piece.all
-    @transacts = Transact.all
+    @user_pieces = Piece.where(user: current_user)
+    @transacts = Transact.where(user: current_user)
 
-    @pieces.each do |piece|
-      @user_pieces << piece if piece.user == current_user
-    end
+    @bought_pieces = []
     @transacts.each do |transact|
       @bought_pieces << transact.piece if transact.user == current_user
     end
