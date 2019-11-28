@@ -6,12 +6,14 @@ class TransactsController < ApplicationController
 
   def new
     @piece = Piece.find(params[:piece_id])
+    authorize @piece
     @transact = Transact.new
     @transact.piece = @piece
   end
 
   def create
     @piece = Piece.find(params[:piece_id])
+    authorize @piece
     @transact = Transact.new
     @transact.piece = @piece
     @transact.user = current_user

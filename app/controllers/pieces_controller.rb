@@ -39,8 +39,9 @@ class PiecesController < ApplicationController
   def update
     @piece = Piece.find(params[:id])
     @piece.sold = false
-    @piece.update(piece_params)
-    redirect_to piece_path(@piece)
+    @piece.user = current_user
+    @piece.update
+    redirect_to dashboard_path
   end
 
   def destroy

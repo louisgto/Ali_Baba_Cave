@@ -16,8 +16,9 @@
     <% end %>
 
     <p class="alert"><%= alert %></p>
-    <%= yield %>
-
+    <div class="page">
+      <%= yield %>
+    </div>
     <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
       <%= render "/layouts/footer" %>
     <% end %>
