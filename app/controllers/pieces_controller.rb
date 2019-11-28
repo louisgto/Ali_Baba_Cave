@@ -1,24 +1,31 @@
 class PiecesController < ApplicationController
   def index
     @categories = Category.all
-      @available_pieces = Piece.where(sold: false)
+
+    @pieces = policy_scope(Piece)
+
+    @available_pieces = Piece.where(sold: false)
+    @f_pieces = @available_pieces.where.not(user: current_user)
     if params[:query].present?
-      @available_pieces = @available_pieces.where("title ILIKE ?", "%#{params[:query]}%")
+      @f_pieces = @f_pieces.where("title ILIKE ?", "%#{params[:query]}%")
     else
-      @available_pieces = @available_pieces.where(sold: false)
+      @f_pieces = @f_pieces.where(sold: false)
     end
   end
 
   def new
     @piece = Piece.new
+    authorize @piece
   end
 
   def show
     @piece = Piece.find(params[:id])
+    authorize @piece
   end
 
   def create
     @piece = Piece.new(piece_params)
+    authorize @piece
     @piece.user = current_user
     if @piece.save
       redirect_to piece_path(@piece)
@@ -29,10 +36,12 @@ class PiecesController < ApplicationController
 
   def edit
     @piece = Piece.find(params[:id])
+    authorize @piece
   end
 
   def update
     @piece = Piece.find(params[:id])
+    @piece.sold = false
     @piece.update(piece_params)
     redirect_to piece_path(@piece)
   end
@@ -40,20 +49,17 @@ class PiecesController < ApplicationController
   def destroy
     @piece = Piece.find(params[:id])
     @piece.destroy
+    authorize @piece
     redirect_to user_index_path
   end
 
   # ----- USER PIECES -----
   def user_index
     @categories = Category.all
-    @user_pieces = Piece.where(user: current_user)
-    @transacts = Transact.where(user: current_user)
-
-    @bought_pieces = []
-    @transacts.each do |transact|
-      @bought_pieces << transact.piece if transact.user == current_user
-    end
-    @pieces
+    @user_pieces = current_user.pieces
+    authorize @user_pieces
+    @bought_transacts = current_user.transacts
+    @sells_transacts = Transact.where(piece_id: @user_pieces.ids)
   end
 
   private

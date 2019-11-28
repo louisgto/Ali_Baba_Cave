@@ -16,4 +16,7 @@
 
 <div class="d-flex justify-content-center">
   <%= link_to "Back to art pieces", pieces_path, class: "btn btn-dark"%>
+  <% if policy(@piece).destroy? %>
+    <%= link_to "Delete offer", piece_path(@piece), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <% end %>
 </div>
