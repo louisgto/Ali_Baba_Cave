@@ -1,19 +1,10 @@
-<h1 class=" center white text-center mt-3">All art pieces</h1>
+<div class="container">
+  <h1 class=" center white text-center mt-3">All art pieces</h1>
 
-<div class="d-flex">
-  <div class="col-2 sign_in_card dropdown">
-    <h3>Filters</h3>
-    <div class="border my-3"></div>
-    <button class="width100 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <% @categories.each do |category| %>
-        <a class="dropdown-item" href="#"><%= category.name %></a>
-      <% end %>
-    </div>
-  </div>
 
-  <ul class="col-10 cards">
-    <% @available_pieces.each do |piece| %>
+<p class="bg-white pl-2 py-2"> You found <%= @available_pieces.count %>results</p>
+    <ul class="cards">
+      <% @available_pieces.each do |piece| %>
         <li>
           <div class="card-category card">
             <img src="https://picsum.photos/id/237/200/300" alt="" class="img_card">
@@ -26,5 +17,6 @@
           </div>
         </li>
       <% end %>
-  </ul>
+    </ul>
 </div>
+
