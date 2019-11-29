@@ -11,7 +11,7 @@
             <li class="d-flex justify-content-between align-items-center mb-1">
               <p class="my-0">- <strong><%= link_to "#{user_piece.title}, #{user_piece.artist}", piece_path(user_piece) %></strong></p>
               <div>
-                <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-dark" %>
+                <%= link_to "Edit", edit_piece_path(user_piece), class: "btn btn-secondary" %>
                 <%= link_to "Delete", piece_path(user_piece), method: :delete, class: "btn btn-danger" %>
               </div>
             </li>
@@ -28,10 +28,6 @@
         <% @bought_transacts.each do |bought_transact| %>
           <li class="d-flex justify-content-between align-items-center mb-1">
             <p class="my-0">- <strong><%= link_to " #{bought_transact.piece.title}, #{bought_transact.piece.artist}", piece_path(bought_transact.piece) %></strong></p>
-            <div>
-              <%= link_to "Edit", edit_piece_path(bought_transact.piece), class: "btn btn-dark" %>
-              <%= link_to "Sell", piece_path(bought_transact.piece), class: "btn btn-success" %>
-            </div>
           </li>
         <% end %>
       </ul>
@@ -49,7 +45,7 @@
             <p>- n°<%= transact.id %> :
             <strong><%= transact.piece.title %></strong>,
             <strong><%= transact.piece.artist %></strong>
-            bought by <strong>me</strong> for
+            bought by <strong><%= transact.piece.user.email %></strong> for
             <strong><%= transact.piece.price %> €</strong></p>
           </li>
         <% end %>
