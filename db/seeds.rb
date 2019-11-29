@@ -43,7 +43,7 @@ piece1 = Piece.create!(
     price:            Faker::Number.between(from: 1000, to: 200000),
     address:          "Paris",
     user:             test_account,
-    remote_photo_url:     "https://cdn-media.rtl.fr/cache/YNNWINErjzA1UcLORGU3Tw/880v587-0/online/image/2019/1022/7799303706_la-joconde-de-leonard-de-vinci-exposee-au-musee-du-louvre-a-paris.jpg"
+    remote_photo_url: "https://cdn-media.rtl.fr/cache/YNNWINErjzA1UcLORGU3Tw/880v587-0/online/image/2019/1022/7799303706_la-joconde-de-leonard-de-vinci-exposee-au-musee-du-louvre-a-paris.jpg"
   )
 
 piece2 = Piece.create!(

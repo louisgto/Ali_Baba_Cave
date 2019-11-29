@@ -12,8 +12,12 @@ class PiecesController < ApplicationController
 
     @available_pieces = Piece.where(sold: false)
     authorize @available_pieces
+    sql_query = " \
+        pieces.title ILIKE :query \
+        OR pieces.artist ILIKE :query \
+      "
     if params[:query].present?
-      @available_pieces = @available_pieces.where("title ILIKE ?", "%#{params[:query]}%")
+      @available_pieces = @available_pieces.where(sql_query, query: "%#{params[:query]}%")
     else
       @available_pieces = @available_pieces.where(sold: false)
     end
