@@ -28,6 +28,8 @@
         <%= f.input :address, class: "w-100" %>
       </div>
     </div>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <div class="row mb-2">
       <div class="col-6">
         <%= f.button :submit, class: "btn btn-success w-100" %>

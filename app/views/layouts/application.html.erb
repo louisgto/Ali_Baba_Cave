@@ -12,13 +12,12 @@
   <body>
     <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
       <%= render "/layouts/navbar" %>
-      <p class="notice alert"><%= notice %></p>
     <% end %>
 
-    <p class="alert"><%= alert %></p>
-    <div class="page">
-      <%= yield %>
+    <div id="particles-js" class="particles-bg" >
     </div>
+      <%= yield %>
+
     <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
       <%= render "/layouts/footer" %>
     <% end %>

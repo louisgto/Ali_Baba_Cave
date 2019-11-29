@@ -8,15 +8,17 @@
     <h5><%= @piece.year %></h5>
     <p><%= @piece.description %></p>
     <p><strong><%= @piece.price %> €</strong></p>
+    <div class="d-flex mt-4">
+      <%= link_to "Back to art pieces", pieces_path, class: "btn btn-dark"%>
+      <% if policy(@piece).destroy? %>
+        <%= link_to "Edit", edit_piece_path(@piece), class: "btn btn-secondary ml-2" %>
+        <%= link_to "Delete offer", piece_path(@piece), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger ml-2" %>
+      <% end %>
+</div>
   </div>
   <div class="col-6">
-    <h4>image</h4>
+    <%= cl_image_tag @piece.photo, height: 300, width: 400, crop: :fill %>
   </div>
 </div>
 
-<div class="d-flex justify-content-center">
-  <%= link_to "Back to art pieces", pieces_path, class: "btn btn-dark"%>
-  <% if policy(@piece).destroy? %>
-    <%= link_to "Delete offer", piece_path(@piece), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-  <% end %>
-</div>
+
