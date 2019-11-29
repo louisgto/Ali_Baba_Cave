@@ -1,5 +1,7 @@
 class Piece < ApplicationRecord
   mount_uploader :photo, PhotoUploader
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   belongs_to :category
   belongs_to :user
@@ -11,7 +13,6 @@ class Piece < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :address, presence: true
-  validates :photo, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_title_and_artist,

@@ -1,12 +1,21 @@
 class PiecesController < ApplicationController
   def index
     @pieces = policy_scope(Piece)
+
+    @coo_pieces = Piece.geocoded #returns pieces with coordinates
+    @markers = @coo_pieces.map do |coo_piece|
+      {
+        lat: coo_piece.latitude,
+        lng: coo_piece.longitude
+      }
+    end
+
     @available_pieces = Piece.where(sold: false)
-    @f_pieces = @available_pieces.where.not(user: current_user)
+    authorize @available_pieces
     if params[:query].present?
-      @f_pieces = @f_pieces.where("title ILIKE ?", "%#{params[:query]}%")
+      @available_pieces = @available_pieces.where("title ILIKE ?", "%#{params[:query]}%")
     else
-      @f_pieces = @f_pieces.where(sold: false)
+      @available_pieces = @available_pieces.where(sold: false)
     end
   end
 
