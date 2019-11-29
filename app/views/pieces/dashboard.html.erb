@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container h-500">
   <h1 class="center white text-center mt-3">Dashboard</h1>
 
   <div class="d-flex">
@@ -45,7 +45,7 @@
             <p>- n°<%= transact.id %> :
             <strong><%= transact.piece.title %></strong>,
             <strong><%= transact.piece.artist %></strong>
-            bought by <strong><%= transact.piece.user.email %></strong> for
+            bought by <strong><%= transact.piece.user.username %></strong> for
             <strong><%= transact.piece.price %> €</strong></p>
           </li>
         <% end %>

@@ -15,6 +15,11 @@
   background-size: cover;
 }
 
+.deco:hover {
+  text-decoration: none;
+  color: green;
+}
+
 ul li div span {
   position: absolute;
   transition: transform .5s;

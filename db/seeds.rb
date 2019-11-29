@@ -14,12 +14,14 @@ Piece.destroy_all
 
 # ----- ACCOUNTS TEST -----
 test_account = User.new()
+test_account.username = 'testeur'
 test_account.email = 'azert@gmail.com'
 test_account.password = 'password'
 test_account.password_confirmation = 'password'
 test_account.save!
 
 louis_account = User.new()
+test_account.username = 'louis'
 louis_account.email = 'louis@gmail.com'
 louis_account.password = 'password'
 louis_account.password_confirmation = 'password'

@@ -9,7 +9,7 @@
           <div class="card-category card">
             <%= cl_image_tag piece.photo, height: 200, crop: :fill %>
             <div class="text-center pb-4 mx-10">
-              <h4><%= link_to piece.title, piece_path(piece) %></h4>
+              <h4><%= link_to piece.title, piece_path(piece), class: "deco" %></h4>
               <h5><%= piece.artist %></h5>
               <p><strong><%= piece.price %> €</strong></p>
               <% if policy(piece).edit? %>
