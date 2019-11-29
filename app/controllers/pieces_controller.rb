@@ -2,6 +2,7 @@ class PiecesController < ApplicationController
   def index
     @pieces = policy_scope(Piece)
     @available_pieces = Piece.where(sold: false)
+    authorize @available_pieces
     @f_pieces = @available_pieces.where.not(user: current_user)
     if params[:query].present?
       @f_pieces = @f_pieces.where("title ILIKE ?", "%#{params[:query]}%")
