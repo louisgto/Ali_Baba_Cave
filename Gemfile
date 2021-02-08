@@ -19,7 +19,7 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'geocoder'
 
 group :development do
